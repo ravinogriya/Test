@@ -42,7 +42,8 @@
 // you try to trace through "use strict" call chains. (#13335)
 // Support: Firefox 18+
 //
-
+// ravi code
+var val =[];
 var arr = [];
 
 var slice = arr.slice;
