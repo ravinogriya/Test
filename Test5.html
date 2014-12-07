@@ -1,0 +1,98 @@
+<html>
+<head>
+    
+<script type="text/javascript">
+
+   function fun_load(){
+   
+      var in_num = prompt("Please enter the input value");
+      var numbers = /^[0-9]+$/;
+      console.log('in_num='+in_num);
+
+    if(in_num!=""){
+
+       if(numbers.test(in_num)){
+               var addHtml ="";
+               addHtml = "<table border='2' cellspacing='2' cellpadding='2'>";
+               addHtml += "<tr><th style='text-decoration:underline;font-weight:bold;text-align:center' colspan='2'>Your Brands</th></tr>" 
+           
+               var index=0;
+               var regexp = /^[A-Za-z]+$/;  
+           
+           while(index<in_num){
+                
+                   var val = prompt("Please enter the Company name");
+             if(val!=""){
+
+                if(regexp.test(val)){
+
+                   //alert("val="+val);
+                   addHtml+="<tr>";
+                   addHtml+="<td class='comp_name'>"+val+"</td><td><input type='text' id='txt"+(index+1)+"' /></td>";
+                   addHtml+="</tr>";
+                    index++
+                  }else{
+
+                    alert("Please enter the correct value");
+                   }
+              }else{
+
+                        alert("Please enter the value");
+              }            
+ 
+         }
+               addHtml+="<tr><td colspan='2'><input type='button' value='Check Duplicates' id='btn' style='text-align:center;' onclick='chk_duplicate()'/></td></tr>";
+               addHtml+="</table>";
+               document.getElementById("span1").innerHTML=addHtml;
+   }else{
+
+         alert("Please enter the number only"); 
+         fun_load();
+    }
+
+} else{
+
+     alert("please enter the input value");
+     fun_load(); 
+}
+
+              
+    } 
+
+  function chk_duplicate(){
+ 
+        
+       var comp = document.getElementsByClassName('comp_name');
+
+          for(var index1=0;index1<comp.length;index1++){
+
+                for(var index2=index1+1;index2<comp.length;index2++){
+
+                          if(comp[index1].innerHTML!=comp[index2].innerHTML){
+                              
+                                    
+                           
+                          }else if(comp[index1].innerHTML==comp[index2].innerHTML){
+
+                                alert('These both company='+comp[index1].innerHTML+' and '+comp[index2].innerHTML+' are duplicates');
+                                 break;
+
+                          }
+
+                 }   
+
+           }
+
+}
+
+</script>   
+
+</head>
+
+<body id="body1" onload="fun_load()">
+
+<center><span id="span1"></span></center>
+
+</body>
+
+</html>
